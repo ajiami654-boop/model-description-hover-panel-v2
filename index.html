@@ -3010,8 +3010,6 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     const totalWidth = panelWidth + detailWidth + gap;
     const rightBound = Math.min(centerRect.right - inset, senderRect.right - inset);
     const triggerRight = Math.min(triggerRect.right, rightBound);
-    const leftBound = centerRect.left + inset;
-    const maxLeft = Math.max(leftBound, rightBound - totalWidth);
     modelSelector.dataset.layout = 'side';
     modelPopLayer.style.setProperty('--model-panel-width', `${panelWidth}px`);
     modelPopLayer.style.setProperty('--model-detail-width', `${detailWidth}px`);
@@ -3024,7 +3022,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     const itemOffset = activeItem ? activeItem.offsetTop + activeItem.offsetHeight / 2 - detailHeight / 2 : 0;
     const detailOffset = clamp(itemOffset, 0, Math.max(0, panelHeight - detailHeight));
     modelPopLayer.style.setProperty('--model-detail-offset', `${Math.round(detailOffset)}px`);
-    const left = clamp(triggerRight - totalWidth, leftBound, maxLeft);
+    const left = triggerRight - totalWidth;
     modelPopLayer.style.setProperty('--model-pop-left', `${Math.round(left)}px`);
     modelPopLayer.style.setProperty('--model-pop-top', `${Math.round(top)}px`);
   }
